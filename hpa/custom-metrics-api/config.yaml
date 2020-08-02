@@ -1,6 +1,6 @@
 rules:
   # SloProbe
-  - seriesQuery: '{__name__=~"^request_duration_seconds_(bucket|count).*",namespace!="",pod!=""}'
+  - seriesQuery: '{__name__=~"^request_duration_seconds_(sum|count).*",namespace!="",pod!="",host!=""}'
     seriesFilters: []
     resources:
       overrides:
@@ -9,9 +9,9 @@ rules:
         pod:
           resource: pod
     name:
-      matches: ".*"
-      as: "slo"
-    metricsQuery: 'sum(rate(request_duration_seconds_count{<<.LabelMatchers>>}[30s])) by (<<.GroupBy>>) / sum(rate(request_duration_seconds_bucket{<<.LabelMatchers>>,le="00.010"}[30s])) by (<<.GroupBy>>)'
+      matches: "^request_duration_seconds_.*"
+      as: "request_duration_seconds_average"
+    metricsQuery: "sum(rate(request_duration_seconds_sum{<<.LabelMatchers>>}[30s])) by (<<.GroupBy>>) / sum(rate(request_duration_seconds_count{<<.LabelMatchers>>}[30s])) by (<<.GroupBy>>)"
   - seriesQuery: '{__name__=~"^container_.*",container_name!="POD",namespace!="",pod_name!=""}'
     seriesFilters: []
     resources:

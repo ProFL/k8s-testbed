@@ -19,7 +19,7 @@ spec:
     - type: Pods
       pods:
         metric:
-          name: slo
+          name: request_duration_seconds_average
         target:
           type: AverageValue
-          averageValue: "1031m"
+          averageValue: "100m"
