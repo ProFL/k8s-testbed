@@ -1,10 +1,10 @@
 SHELL=bash
 
-.PHONY: apply-nginx-ingress-controller
+.PHONY: apply-nginx-igcontroller
 apply-nginx-igcontroller:
 	@kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.34.1/deploy/static/provider/cloud/deploy.yaml
 
-.PHONY: delete-nginx-ingress-controller
+.PHONY: delete-nginx-igcontroller
 delete-nginx-igcontroller:
 	@kubectl delete -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.34.1/deploy/static/provider/cloud/deploy.yaml
 
