@@ -11,7 +11,7 @@ rules:
     name:
       matches: ".*"
       as: "slo"
-    metricsQuery: 'sum(rate(request_duration_seconds_bucket{<<.LabelMatchers>>,le="00.010"}[30s])) / sum(rate(request_duration_seconds_count{<<.LabelMatchers>>}[30s])) by (<<.GroupBy>>)'
+    metricsQuery: 'sum(rate(request_duration_seconds_count{<<.LabelMatchers>>}[30s])) by (<<.GroupBy>>) / sum(rate(request_duration_seconds_bucket{<<.LabelMatchers>>,le="00.010"}[30s])) by (<<.GroupBy>>)'
   - seriesQuery: '{__name__=~"^container_.*",container_name!="POD",namespace!="",pod_name!=""}'
     seriesFilters: []
     resources:

@@ -2,21 +2,10 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 configMapGenerator:
   - name: adapter-config
-    namespace: monitoring
+    namespace: default
     files:
       - custom-metrics-api/config.yaml
 resources:
-  - metrics-server/auth-delegator.yaml
-  - metrics-server/auth-reader.yaml
-  - metrics-server/metrics-apiservice.yaml
-  - metrics-server/metrics-server-deployment.yaml
-  - metrics-server/metrics-server-service.yaml
-  - metrics-server/resource-reader.yaml
-  - prometheus/prometheus-cfg.yaml
-  - prometheus/prometheus-dep.yaml
-  - prometheus/prometheus-rbac.yaml
-  - prometheus/prometheus-svc.yaml
-  - namespaces.yaml
   - custom-metrics-api/cm-adapter-serving-certs.yaml
   - custom-metrics-api/custom-metrics-apiserver-auth-delegator-cluster-role-binding.yaml
   - custom-metrics-api/custom-metrics-apiserver-auth-reader-role-binding.yaml

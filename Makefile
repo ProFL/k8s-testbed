@@ -10,6 +10,7 @@ delete-nginx-igcontroller:
 
 .PHONY: apply-hpa
 apply-hpa:
+	@kubectl apply -k monitoring
 	@kubectl apply -k kube-znn
 	@kubectl apply -f nginxc-ingress
 	@( cd hpa \
@@ -21,8 +22,8 @@ apply-hpa:
 delete-hpa:
 	@kubectl delete -k hpa
 	@kubectl delete -f nginxc-ingress
-	@kubectl delete -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.34.1/deploy/static/provider/cloud/deploy.yaml
 	@kubectl delete -k kube-znn
+	@kubectl delete -k monitoring
 
 .PHONY: apply-kubow
 apply-kubow:

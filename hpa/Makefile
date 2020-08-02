@@ -27,7 +27,7 @@ gensecret: gencerts
 	@echo "kind: Secret" >> $(SECRET_FILE)
 	@echo "metadata:" >> $(SECRET_FILE)
 	@echo " name: cm-adapter-serving-certs" >> $(SECRET_FILE)
-	@echo " namespace: monitoring" >> $(SECRET_FILE)
+	@echo " namespace: default" >> $(SECRET_FILE)
 	@echo "data:" >> $(SECRET_FILE)
 ifeq ($(UNAME), Darwin)
 	@echo " serving.crt: $$(cat output/apiserver.pem | base64)" >> $(SECRET_FILE)

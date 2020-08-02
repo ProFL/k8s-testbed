@@ -22,4 +22,4 @@ spec:
           name: slo
         target:
           type: AverageValue
-          averageValue: "970m"
+          averageValue: "1031m"
